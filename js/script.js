@@ -22,4 +22,27 @@ const images = [
     }
 ];
 
-console.log(images)
+
+const mainContainerEl = document.getElementById("main-container");
+const imgContainerEl = document.getElementById("img-container");
+const playerContainerEl = document.getElementById("player-container");
+
+let activeImage = document.createElement("img");
+imgContainerEl.append(activeImage);
+activeImage.classList.add("imgBig")
+
+
+
+const screenImages = images.map((element) =>{
+    return element.image
+})
+
+
+
+
+
+
+
+
+
+
