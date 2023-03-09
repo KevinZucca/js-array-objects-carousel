@@ -26,20 +26,28 @@ const images = [
 const mainContainerEl = document.getElementById("main-container");
 const imgContainerEl = document.getElementById("img-container");
 const playerContainerEl = document.getElementById("player-container");
-const descriptionContainerEl = document.getElementById("description")
+const descriptionContainerEl = document.getElementById("description");
 const upArrowEl = document.getElementById("up-arrow");
 const downArrowEl = document.getElementById("down-arrow");
 
 // for each to assign the values to the image container
-   images.forEach((element) => {
+   images.forEach((element, index) => {
     let activeImage = document.createElement("img");
     activeImage.src = element.image;
-    descriptionContainerEl.textContent = element.title;
-    let imageText = document.createElement("p");
-    descriptionContainerEl.append(imageText)
-    imageText.textContent = element.text;
     imgContainerEl.append(activeImage);
     activeImage.classList.add("imgBig");
+
+    let title = document.createElement("h2");
+    title.textContent = element.title;
+
+
+    let imageText = document.createElement("p");
+    imageText.textContent = element.text;
+
+    if (index == 0) {
+        descriptionContainerEl.append(title);
+        descriptionContainerEl.append(imageText);
+    }
    }) 
 
 
@@ -62,11 +70,12 @@ const downArrowEl = document.getElementById("down-arrow");
          activeImageIndex = images.length - 1;
        }
        imgContainerEl.querySelector(".imgBig").src = images[activeImageIndex].image;
-       playerContainerEl.querySelector(".imgSmall").src = images[activeImageIndex].image;
        descriptionContainerEl.querySelector("h2").textContent = images[activeImageIndex].title;
        descriptionContainerEl.querySelector("p").textContent = images[activeImageIndex].text;
      });
 
+
+     
      downArrowEl.addEventListener("click", function() {
         activeImageIndex++;
         if (activeImageIndex >= images.length) {
