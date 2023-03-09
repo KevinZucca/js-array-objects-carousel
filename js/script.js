@@ -26,21 +26,45 @@ const images = [
 const mainContainerEl = document.getElementById("main-container");
 const imgContainerEl = document.getElementById("img-container");
 const playerContainerEl = document.getElementById("player-container");
-
-let activeImage = document.createElement("img");
-imgContainerEl.append(activeImage);
-activeImage.classList.add("imgBig")
+const descriptionContainerEl = document.getElementById("description")
 
 
+// for each to assign the big images to the image container
+   images.forEach((bigImage) => {
+    let activeImage = document.createElement("img");
+    activeImage.src = bigImage.image;
+    imgContainerEl.append(activeImage);
+    activeImage.classList.add("imgBig")
+   }) 
 
-const screenImages = images.map((element) =>{
-    return element.image
-})
+// for each to assign the small images to the aside
+   images.forEach((smallImage) => {
+    let activeImageSmall = document.createElement("img");
+    activeImageSmall.src = smallImage.image;
+    playerContainerEl.append(activeImageSmall);
+    activeImageSmall.classList.add("imgSmall")
+   }) 
+ 
+
+// creating an array to get the titles of the images
+   let title = [];
+   title = images.map((imageName)=>{
+    return imageName.title
+   })
+
+   console.log(title)
 
 
+// cicle to put every title to the relative image
+   for (let i = 0; i < title; i++) {
+    let description = document.createElement("h4")
+    description.innerHTML = title
+    descriptionContainerEl.append(description)
+    description.classList.add("description")
+   }
 
 
-
+   console.log(description)
 
 
 
